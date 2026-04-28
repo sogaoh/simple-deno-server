@@ -6,8 +6,8 @@ USER deno
 COPY deno.json .
 COPY main.ts .
 
-RUN deno cache main.ts
+RUN deno compile --allow-net --allow-env --output /app/server main.ts
 
 EXPOSE 8080
 
-CMD ["run", "--allow-net", "--allow-env", "main.ts"]
+CMD ["/app/server"]

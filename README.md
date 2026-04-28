@@ -27,10 +27,18 @@ All responses are JSON and include request metadata (method, path, host, `x-forw
 deno task dev
 ```
 
-### Docker Compose
+### Docker Compose (via Make)
 
-```bash
-docker compose up --build
-```
+| Command | Description |
+|---------|-------------|
+| `make up` | Start containers (foreground) |
+| `make upd` | Start containers (detached) |
+| `make upb` | Build and start containers (detached) |
+| `make down` | Stop and remove containers |
+| `make restart` | Restart containers |
+| `make prune` | Remove unused Docker resources (volumes included) |
+| `make cleanup` | Full Docker cleanup (images, cache, volumes) |
 
 The app listens on port `8080` inside the container, mapped to `18080` on the host. Includes a health check against `/healthz`.
+
+> The image uses `deno compile` to produce a self-contained binary, so it works with `readOnlyRootFileSystem: true` on ECS Fargate.
