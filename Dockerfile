@@ -1,4 +1,4 @@
-FROM denoland/deno:2.7.13
+FROM ghcr.io/denoland/deno:2.8.0
 
 WORKDIR /app
 
